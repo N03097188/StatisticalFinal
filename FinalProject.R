@@ -1,5 +1,5 @@
 getwd()
 #imported_Data <- read.csv("FinalProject.csv", TRUE, ",")
-imported_Data <- read.csv("FinalProject.csv", TRUE, ",")
+imported_Data <- read.csv("https://github.com/N03097188/BME/blob/master/FinalProject.csv", TRUE, ",")
 class(imported_Data)
 head(imported_Data)
