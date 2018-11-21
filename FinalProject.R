@@ -1,0 +1,5 @@
+getwd()
+#imported_Data <- read.csv("FinalProject.csv", TRUE, ",")
+imported_Data <- read.csv("FinalProject.csv", TRUE, ",")
+class(imported_Data)
+head(imported_Data)
