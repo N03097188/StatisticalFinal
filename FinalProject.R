@@ -9,15 +9,23 @@ getwd()
 #To read a .csv file from a local machine **read above**
 #====================================================================================================================
 #====================================================================================================================
-# Uncomment the line below this ????????????????????????????????????????????????
+# Uncomment the line below this ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # imported_Data <- read.csv("FinalProject.csv", TRUE, ",")
-# comment out the line below this ???????????????????????????????????????????????? 
-imported_Data <- read.csv("https://raw.githubusercontent.com/N03097188/BME/master/FinalProject.csv", TRUE, ",")
+# comment out the line below this ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 
+imported_Data <- read.csv("https://raw.githubusercontent.com/N03097188/StatisticalFinal/master/FinalProject.csv", TRUE, ",")
 #====================================================================================================================
 #====================================================================================================================
 
-class(imported_Data)
-head(imported_Data)
-str(imported_Data)
-imported_Data
 
+
+#====================================================================================================================
+#====================================================================================================================
+# This section cleans out the NEUTRO column
+imported_Data$NEUTRO <- as.numeric(as.character(imported_Data$NEUTRO))  # Ensures NEUTRO column is of type numeric
+NEUTRO_screened <- imported_Data$NEUTRO[!(is.na(imported_Data$NEUTRO))] # Filters out NA elements of the NEUTRO column and places it into 
+                                                                        # a new vector called NEUTRO_screened
+NEUTRO_mean <- mean(NEUTRO_screened)                                    # get the NEUTRO column's mean and stores it into NEUTRO_mean
+imported_Data$NEUTRO[(is.na(imported_Data$NEUTRO))] <- NEUTRO_mean      # Replaces NA elements in the imported NEUTRO column with the mean  
+imported_Data$NEUTRO                                                    # Displays "imported_Data$NEUTRO" for debugging purposes
+#====================================================================================================================
+#====================================================================================================================
