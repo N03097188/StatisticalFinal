@@ -20,12 +20,25 @@ imported_Data <- read.csv("https://raw.githubusercontent.com/N03097188/Statistic
 
 #====================================================================================================================
 #====================================================================================================================
+# This section screens out the NEUTRO column for emtpy cells, and outliers that are not between the data set's IQR 
+imported_Data$NEUTRO <- as.numeric(as.character(imported_Data$NEUTRO))              # Ensures the NEUTRO column is of type numeric 
+NEUTRO_screened <- imported_Data$NEUTRO[!is.na(imported_Data$NEUTRO)]               # Screens out NA values in the NEUTRO column and stores remaining values in NEUTRO_screened
+NEUTRO_screened <- NEUTRO_screened[NEUTRO_screened<quantile(NEUTRO_screened, 0.75)] # Screens out values above third quartile mark in the NEUTRO column and stores remaining values in NEUTRO_screened
+NEUTRO_screened <- NEUTRO_screened[NEUTRO_screened>quantile(NEUTRO_screened, 0.25)] # Screens out values below first quartile mark in the NEUTRO column and stores remaining values in NEUTRO_screened
+NEUTRO_screened                                                                     # Print to see final filtered vector 
+#====================================================================================================================
+#====================================================================================================================
+
+
+
+#====================================================================================================================
+#====================================================================================================================
 # This section cleans out the NEUTRO column
-imported_Data$NEUTRO <- as.numeric(as.character(imported_Data$NEUTRO))  # Ensures NEUTRO column is of type numeric
-NEUTRO_screened <- imported_Data$NEUTRO[!(is.na(imported_Data$NEUTRO))] # Filters out NA elements of the NEUTRO column and places it into 
+#imported_Data$NEUTRO <- as.numeric(as.character(imported_Data$NEUTRO))  # Ensures NEUTRO column is of type numeric
+#NEUTRO_screened <- imported_Data$NEUTRO[!(is.na(imported_Data$NEUTRO))] # Filters out NA elements of the NEUTRO column and places it into 
                                                                         # a new vector called NEUTRO_screened
-NEUTRO_mean <- mean(NEUTRO_screened)                                    # get the NEUTRO column's mean and stores it into NEUTRO_mean
-imported_Data$NEUTRO[(is.na(imported_Data$NEUTRO))] <- NEUTRO_mean      # Replaces NA elements in the imported NEUTRO column with the mean  
-imported_Data$NEUTRO                                                    # Displays "imported_Data$NEUTRO" for debugging purposes
+#NEUTRO_mean <- mean(NEUTRO_screened)                                    # get the NEUTRO column's mean and stores it into NEUTRO_mean
+#imported_Data$NEUTRO[(is.na(imported_Data$NEUTRO))] <- NEUTRO_mean      # Replaces NA elements in the imported NEUTRO column with the mean  
+#imported_Data$NEUTRO                                                    # Displays "imported_Data$NEUTRO" for debugging purposes
 #====================================================================================================================
 #====================================================================================================================
