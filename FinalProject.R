@@ -1,7 +1,7 @@
 getwd()
 
 #   "getwd()" displays the working directory for this project
-# If you have a .csv file on your local machine you would like to 
+# If you have a .csv file on your local machine that you would like to 
 # import into this project, move the .csv file into the working 
 # directory specified by "getwd()" and uncomment the line below 
 # and comment out the other read.csv line immediated after it
