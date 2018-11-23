@@ -6,9 +6,11 @@ getwd()
 # directory specified by "getwd()" and uncomment the line below 
 # and comment out the other read.csv line immediated after it
 
-#To read a .csv file from a local machine **read above**
+
+
 #====================================================================================================================
 #====================================================================================================================
+# To read a target .csv file from a local machine **read above**
 # Uncomment the line below this ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # imported_Data <- read.csv("FinalProject.csv", TRUE, ",")
 # comment out the line below this ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 
