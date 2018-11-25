@@ -83,3 +83,42 @@ AMLTIME_screened                                                                
 #imported_Data$NEUTRO                                                    # Displays "imported_Data$NEUTRO" for debugging purposes
 #====================================================================================================================
 #====================================================================================================================
+
+
+
+#====================================================================================================================
+#====================================================================================================================
+#ANOVA
+# Compute the analysis of variance
+Anova_Results<-aov(NIH ~  AGE + NEUTRO + PLATE + DIED + AML, data = imported_Data)
+summary(Anova_Results) #Results for ANOVA test 
+
+#1. Homogeneity of Variances 
+plot(Anova_Results, 1)
+
+#2. Normality
+plot(Anova_Results,2)
+
+#Linear Regression
+#Computing for simple linear regression 
+scatter.smooth(x=imported_Data$NIH, y=imported_Data$DIED, main="NIH ~ DIED")
+
+par(mfrow=c(1, 2))  # divide graph area in 2 columns
+boxplot(test,              main="NEUTRO", sub=paste("Outlier rows: ", boxplot.stats(test)$out))  # box plot for 'NEUTRO'
+boxplot(imported_Data$AML, main="AML",    sub=paste("Outlier rows: ", boxplot.stats(imported_Data$AML)$out))  # box plot for 'PLATE'
+
+linearMod <- lm(NEUTRO ~ DIED, data=imported_Data)  # build linear regression model on full data
+print(linearMod)
+summary(linearMod)
+
+linearMod2 <- lm(NIH ~ NEUTRO, data=imported_Data)
+summary(linearMod2)
+
+# Logistics Regression
+glm.fit <- glm(NIH ~ AGE + NEUTRO + PLATE + DIED + AML, data = imported_Data, family = binomial)
+summary(glm.fit)
+
+#Non-parametric testing
+#wilcox.test(NEUTRO ~ GENDER)
+#====================================================================================================================
+#====================================================================================================================
